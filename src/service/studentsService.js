@@ -15,7 +15,7 @@ const validateStudent = (name, email, birthDate, grade) => {
 };
 
 const createUserValidation = async (email) => {
-  const user = await model.findUser(email);
+  const user = await model.findStudent(email);
   if (user) {
     const error = new Error('Email already registered');
     error.statusCode = 'conflict';
@@ -30,6 +30,12 @@ const createStudent = async (name, email, birthDate, grade) => {
   return result;
 };
 
+const getAll = async() => {
+  const result = await model.getAll();
+  return result;
+};
+
 module.exports = {
-  createStudent
+  createStudent,
+  getAll,
 };
