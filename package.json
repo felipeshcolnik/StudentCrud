@@ -3,6 +3,7 @@
     "body-parser": "^1.19.2",
     "express": "^4.17.3",
     "express-rescue": "^1.1.31",
+    "joi": "^17.6.0",
     "lint": "^0.7.0",
     "mongodb": "^4.4.1",
     "nodemon": "^2.0.15"
@@ -11,7 +12,6 @@
   "description": "Api  capaz de armazenar dados de um estudantes no sistema, onde é possível criar, listar, alterar, remover e filtrar estudantes",
   "version": "1.0.0",
   "main": "index.js",
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node src/api/server.js",
