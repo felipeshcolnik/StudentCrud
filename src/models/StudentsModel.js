@@ -1,4 +1,5 @@
 const connection = require('./connection');
+const { ObjectId } = require('mongodb');
 
 const createStudent = async (name, email, birthDate, grade) =>
   connection()
@@ -15,8 +16,26 @@ const getAll = async() =>
     .then((db) => db.collection('students').find({}).toArray())
     .then((result) => result);
 
+const editStudent = async(_id, name, email, birthDate, grade) => {
+  if (!ObjectId.isValid(_id)) return null;
+  return connection()
+    .then((db) => db.collection('students')
+      .findOneAndUpdate({_id: ObjectId(_id)}, {$set: {name, email, birthDate, grade}})
+      .then(() => ({_id, name, email, birthDate, grade }))
+    )
+}
+
+const deleteStudent = async(id) => {
+  if (!ObjectId.isValid(id)) return null;
+  return connection()
+    .then((db) => db.collection('students')
+    .findOneAndDelete({ id: id }))
+}
+
 module.exports = {
   createStudent,
   findStudent,
   getAll,
+  editStudent,
+  deleteStudent,
 };

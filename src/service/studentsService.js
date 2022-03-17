@@ -35,7 +35,21 @@ const getAll = async() => {
   return result;
 };
 
+const editStudent = async(_id, name, email, birthDate, grade) => {
+  validateStudent(name, email, birthDate, grade);
+  const updatedStudent = await model.editStudent(_id, name, email, birthDate, grade);
+  return updatedStudent;
+}
+
+const deleteStudent = async (id) => {
+  const result = await model.deleteStudent(id);
+  if (!result) return 'Student not Found'
+  return 'Sucessfully deleted Student';
+}
+
 module.exports = {
   createStudent,
   getAll,
+  editStudent,
+  deleteStudent,
 };
