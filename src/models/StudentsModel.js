@@ -36,6 +36,7 @@ const deleteStudent = async(id) => {
   const result = connection()
     .then((db) => db.collection('students')
     .deleteOne({_id: ObjectId(id) }))
+  return result;
 }
 
 module.exports = {
