@@ -16,6 +16,10 @@ const getAll = async() =>
     .then((db) => db.collection('students').find({}).toArray())
     .then((result) => result);
 
+const getOne = async(id) => 
+  connection()
+    .then((db) => db.collection('students').findOne({_id: ObjectId(id)}))
+
 const editStudent = async(_id, name, email, birthDate, grade) => {
   if (!ObjectId.isValid(_id)) return null;
   return connection()
@@ -36,6 +40,7 @@ module.exports = {
   createStudent,
   findStudent,
   getAll,
+  getOne,
   editStudent,
   deleteStudent,
 };

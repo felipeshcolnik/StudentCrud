@@ -16,6 +16,12 @@ const getAll = async (req, res) => {
   return res.status(200).json({result});
 };
 
+const getOne = async (req, res) => {
+  const { id } = req.params
+  const result = await service.getOne(id);
+  return res.status(200).json({result});
+};
+
 const editStudent = async (req, res) => {
   const { _id, name, email, birthDate, grade } = req.body;
   try {
@@ -36,6 +42,7 @@ const deleteStudent = async function (req, res) {
 module.exports = {
   createStudent,
   getAll,
+  getOne,
   editStudent,
   deleteStudent,
 };

@@ -8,6 +8,7 @@ app.use(bodyParser.json());
 app.get('/', (req, res) => res.send('ok'));
 app.post('/student', student.createStudent);
 app.get('/student', student.getAll);
+app.get('/student/:id', student.getOne);
 app.put('/student', student.editStudent);
 app.delete('/student/:id', student.deleteStudent);
 

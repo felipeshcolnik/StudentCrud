@@ -35,6 +35,11 @@ const getAll = async() => {
   return result;
 };
 
+const getOne = async(id) => {
+  const result = await model.getOne(id);
+  return result;
+}
+
 const editStudent = async(_id, name, email, birthDate, grade) => {
   validateStudent(name, email, birthDate, grade);
   const updatedStudent = await model.editStudent(_id, name, email, birthDate, grade);
@@ -50,6 +55,7 @@ const deleteStudent = async (id) => {
 module.exports = {
   createStudent,
   getAll,
+  getOne,
   editStudent,
   deleteStudent,
 };
