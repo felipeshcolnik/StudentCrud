@@ -31,9 +31,9 @@ const editStudent = async(_id, name, email, birthDate, grade) => {
 
 const deleteStudent = async(id) => {
   if (!ObjectId.isValid(id)) return null;
-  return connection()
+  const result = connection()
     .then((db) => db.collection('students')
-    .findOneAndDelete({ id: id }))
+    .deleteOne({_id: ObjectId(id) }))
 }
 
 module.exports = {

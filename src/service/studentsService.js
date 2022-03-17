@@ -1,7 +1,6 @@
 const Joi = require('joi');
 const model = require('../models/StudentsModel');
-// const { SECRET, jwtConfig } = require('../utils/jwtUtils');
-  
+
 const validateStudent = (name, email, birthDate, grade) => {
   const { error } = Joi.object({
     name: Joi.string().required(),
@@ -48,8 +47,9 @@ const editStudent = async(_id, name, email, birthDate, grade) => {
 
 const deleteStudent = async (id) => {
   const result = await model.deleteStudent(id);
-  if (!result) return 'Student not Found'
-  return 'Sucessfully deleted Student';
+  if (!result) return 'Invalid Id';
+  if (!result.deletedCount) return 'Student not Found';
+  if (result.deletedCount) return 'Sucessfully deleted Student';
 }
 
 module.exports = {
