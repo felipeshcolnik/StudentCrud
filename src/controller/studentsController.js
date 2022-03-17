@@ -18,8 +18,13 @@ const getAll = async (req, res) => {
 
 const getOne = async (req, res) => {
   const { id } = req.params
-  const result = await service.getOne(id);
-  return res.status(200).json({result});
+  try {
+    const result = await service.getOne(id);
+    return res.status(200).json({result});
+  }
+  catch (err) {
+    return res.status(401).json({message: err.message})
+  }
 };
 
 const editStudent = async (req, res) => {

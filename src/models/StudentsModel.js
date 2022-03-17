@@ -16,9 +16,11 @@ const getAll = async() =>
     .then((db) => db.collection('students').find({}).toArray())
     .then((result) => result);
 
-const getOne = async(id) => 
-  connection()
+const getOne = async(id) => {
+  if (!ObjectId.isValid(id)) throw new Error('Id is not valid');
+  return connection()
     .then((db) => db.collection('students').findOne({_id: ObjectId(id)}))
+}
 
 const editStudent = async(_id, name, email, birthDate, grade) => {
   if (!ObjectId.isValid(_id)) return null;
