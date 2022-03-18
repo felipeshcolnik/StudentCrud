@@ -4,8 +4,7 @@ const { ObjectId } = require('mongodb');
 const createStudent = async (name, email, birthDate, grade) =>
   connection()
     .then((db) => db.collection('students').insertOne({ name, email, birthDate, grade }))
-    .then((result) => result);
-  
+
 const findStudent = async (email)  =>
   connection()
     .then((db) => db.collection('students').findOne({email}))
