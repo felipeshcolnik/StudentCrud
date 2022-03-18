@@ -1,5 +1,6 @@
 # StudentCrud
-Api  capaz de armazenar dados de um estudantes no sistema, onde é possível criar, listar, alterar, remover e filtrar estudantes
+
+Api  capaz de armazenar dados de um estudantes no sistema, onde é possível criar, listar, alterar, remover e filtrar estudantes.
 
 # Para Rodar o Projeto:
 1- Em seu terminal, rode o comando abaixo, para fazer o download do projeto para sua máquina :
@@ -35,6 +36,16 @@ Api  capaz de armazenar dados de um estudantes no sistema, onde é possível cri
    http://localhost:3001/student/id
    onde o id é uma sequencia de dígitos fornecida pelo Banco de Dados do MONGO
 
+
+  Para filtrar estudantes com alguma caracteristica específica,, utilize o método GET e a rota 
+  http://localhost:3001/filterstudent
+  Inclua um body com as seguintes informações:
+    { "name": "Nome do Aluno" } ou
+	  { "email": "exemplo@teste.com" } ou
+	  { "birthDate": "dd/mm/aaaa"} ou
+	  { "grade": "exemplo de serie" }
+  
+
    Para editar as informações de um estudante, utilize o método PUT e a rota 
    http://localhost:3001/student
    Inclua um body com as seguintes informações:
@@ -50,3 +61,4 @@ Api  capaz de armazenar dados de um estudantes no sistema, onde é possível cri
    Para deletar um estudantedo banco de dados, utilize o método DELETE e a rota 
    http://localhost:3001/student/id
    onde o id é uma sequencia de dígitos fornecida pelo Banco de Dados do MONGO
+

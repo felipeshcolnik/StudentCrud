@@ -27,6 +27,16 @@ const getOne = async (req, res) => {
   }
 };
 
+const filterMany = async (req, res) => {
+  try {
+    const result = await service.filterMany(req.body);
+    return res.status(200).json({result});
+  }
+  catch (err) {
+    return res.status(401).json({message: err.message})
+  }
+};
+
 const editStudent = async (req, res) => {
   const { _id, name, email, birthDate, grade } = req.body;
   try {
@@ -48,6 +58,7 @@ module.exports = {
   createStudent,
   getAll,
   getOne,
+  filterMany,
   editStudent,
   deleteStudent,
 };

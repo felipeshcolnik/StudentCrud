@@ -4,12 +4,10 @@ const { ObjectId } = require('mongodb');
 const createStudent = async (name, email, birthDate, grade) =>
   connection()
     .then((db) => db.collection('students').insertOne({ name, email, birthDate, grade }))
-    .then((result) => result);
-  
+
 const findStudent = async (email)  =>
   connection()
     .then((db) => db.collection('students').findOne({email}))
-    .then((result) => result);
 
 const getAll = async() => 
   connection()
@@ -20,6 +18,12 @@ const getOne = async(id) => {
   if (!ObjectId.isValid(id)) throw new Error('Id is not valid');
   return connection()
     .then((db) => db.collection('students').findOne({_id: ObjectId(id)}))
+}
+
+const filterMany = async(object) => {
+  console.log(object);
+  return connection()
+    .then((db) => db.collection('students').find(object).toArray());
 }
 
 const editStudent = async(_id, name, email, birthDate, grade) => {
@@ -44,6 +48,7 @@ module.exports = {
   findStudent,
   getAll,
   getOne,
+  filterMany,
   editStudent,
   deleteStudent,
 };
