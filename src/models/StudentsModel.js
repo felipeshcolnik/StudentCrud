@@ -20,6 +20,13 @@ const getOne = async(id) => {
   if (!ObjectId.isValid(id)) throw new Error('Id is not valid');
   return connection()
     .then((db) => db.collection('students').findOne({_id: ObjectId(id)}))
+    .then((result) => result);
+}
+
+const filterMany = async(object) => {
+  console.log(object);
+  return connection()
+    .then((db) => db.collection('students').find(object).toArray());
 }
 
 const editStudent = async(_id, name, email, birthDate, grade) => {
@@ -44,6 +51,7 @@ module.exports = {
   findStudent,
   getAll,
   getOne,
+  filterMany,
   editStudent,
   deleteStudent,
 };

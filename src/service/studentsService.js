@@ -39,6 +39,11 @@ const getOne = async(id) => {
   return result;
 }
 
+const filterMany = async(object) => {
+  const result = await model.filterMany(object);
+  return result;
+}
+
 const editStudent = async(_id, name, email, birthDate, grade) => {
   validateStudent(name, email, birthDate, grade);
   const updatedStudent = await model.editStudent(_id, name, email, birthDate, grade);
@@ -56,6 +61,7 @@ module.exports = {
   createStudent,
   getAll,
   getOne,
+  filterMany,
   editStudent,
   deleteStudent,
 };
