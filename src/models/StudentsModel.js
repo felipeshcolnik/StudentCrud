@@ -9,7 +9,6 @@ const createStudent = async (name, email, birthDate, grade) =>
 const findStudent = async (email)  =>
   connection()
     .then((db) => db.collection('students').findOne({email}))
-    .then((result) => result);
 
 const getAll = async() => 
   connection()
@@ -20,7 +19,6 @@ const getOne = async(id) => {
   if (!ObjectId.isValid(id)) throw new Error('Id is not valid');
   return connection()
     .then((db) => db.collection('students').findOne({_id: ObjectId(id)}))
-    .then((result) => result);
 }
 
 const filterMany = async(object) => {
