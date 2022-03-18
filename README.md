@@ -1,4 +1,5 @@
 # StudentCrud
+
 Api  capaz de armazenar dados de um estudantes no sistema, onde é possível criar, listar, alterar, remover e filtrar estudantes.
 
 # Para Rodar o Projeto:
@@ -35,6 +36,7 @@ Api  capaz de armazenar dados de um estudantes no sistema, onde é possível cri
    http://localhost:3001/student/id
    onde o id é uma sequencia de dígitos fornecida pelo Banco de Dados do MONGO
 
+
   Para filtrar estudantes com alguma caracteristica específica,, utilize o método GET e a rota 
   http://localhost:3001/filterstudent
   Inclua um body com as seguintes informações:
@@ -59,3 +61,4 @@ Api  capaz de armazenar dados de um estudantes no sistema, onde é possível cri
    Para deletar um estudantedo banco de dados, utilize o método DELETE e a rota 
    http://localhost:3001/student/id
    onde o id é uma sequencia de dígitos fornecida pelo Banco de Dados do MONGO
+
